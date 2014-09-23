@@ -16,7 +16,13 @@ var InitiativeRoute = Ember.Route.extend({
       var initiative = this.get('controller.model');
       initiative.set('isSupported', false);
       this.transitionTo('initiative');
-    }
+    },
+
+    edit: function( model ) {
+      console.log("kakaka", model);
+      this.transitionTo( 'initiatives.new', model.copy() ); //Cannot read property 'copy' of undefined 
+      //this.transitionTo( 'initiatives.new');
+    },
   }
 
 });

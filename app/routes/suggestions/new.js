@@ -21,6 +21,7 @@ var SuggestionsNewRoute = Ember.Route.extend({
             details: this.controller.content._attributes.details
       });
       suggestion.save().then(function(model) {
+
         initiative.get('suggestions').then(function(suggestions) {
           suggestions.pushObject(suggestion);
         });

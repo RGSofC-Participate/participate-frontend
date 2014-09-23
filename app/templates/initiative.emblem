@@ -1,9 +1,35 @@
+// .title
+//   h2
+//     = title 
+//     h5 <button {{action "toggleEditing"}}> Edit</button>
+//     if isEditing
+//       p Initiative title
+//         {{input value=title}}
+//       p Issue title 
+//         {{input value=issue.title}}
 .title
-  h2
-    = title
+  if isEditing
+    h5 Initiative title
+      {{input value=title}}
+    h5 Issue title 
+      {{input value=issue.title}}
+  else
+    h2
+      = title 
+      h5 <button {{action "toggleEditing"}}> Edit</button>
+    p.issue_title Issue: #{issue.title}
 
-.issue_title
-  p Issue: #{issue.title}
+
+.choice
+  if isEditing
+    button click="cancel" Cancel
+    button click="submit" Submit 
+// .cancel 
+//   if isEditing
+//     button click="cancel" Cancel
+
+// .issue_title
+//   p Issue: #{issue.title}
 
 .description
   p
@@ -23,10 +49,9 @@
 
 h2 List of suggestions
 
-ul.suggestions
+ul.suggestions 
   each suggestion in suggestions
-    li.suggestion = suggestion.details
+    li.suggestion = suggestion.details 
   else
      p.nosuggestion No suggestions. Be the first to write one!
-
-=outlet
+=outlet 

@@ -1,22 +1,34 @@
 import Ember from 'ember';
 
-var InitiativeIndexController = Ember.ObjectController.extend({
+var InitiativeController = Ember.ObjectController.extend({
+  //needs: ['somecontroller'],
 
-  isVisible: false,
+  //edit initiaitve
+  someProperty: "lalalal",
+
   actions: {
-    toggleShow: function() {
-      
-      this.toggleProperty('isVisible');
+    //edit button
+    toggleEditing: function() {
+          this.toggleProperty('isEditing');
+    },
+    //submit edited changes
+    submit: function() {  
+      var _this = this;
+      debugger;
+      var initiative = this.modelFor('initiative');
+      initiative.save().then(function(model) {
+        _this.transitionTo('initiative', model.get('id'));
+      });
+    },
 
-      if(this.isVisible) {
-        this.transitionToRoute('suggestions.index');
-
-      } else {
-        this.transitionToRoute('initiative.index');
-      }
+    // delete initiative
+    deleteInitiative: function () {
+      var initiative = this.get('model');
+      //debugger;
+      initiative.deleteRecord();
+      initiative.save();      
     }
   }
-
 });
 
-export default InitiativeIndexController;
+export default InitiativeController;
