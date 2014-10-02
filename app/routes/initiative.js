@@ -18,11 +18,26 @@ var InitiativeRoute = Ember.Route.extend({
       this.transitionTo('initiative');
     },
 
-    edit: function( model ) {
-      console.log("kakaka", model);
-      this.transitionTo( 'initiatives.new', model.copy() ); //Cannot read property 'copy' of undefined 
-      //this.transitionTo( 'initiatives.new');
+    //cancel button
+    cancel: function() {
+      this.transitionTo('initiative');
+      //this.transitionToRoute('initiative'); // page still has the edit box and buttons
+      // this.refresh();
+      //Ember.$.egtScript('/templates/initiative.emblem');
+      //document.execCommand('Stop');
     },
+
+    //submit edited changes
+    submit: function() {
+      var _this = this,
+          content = this.controller.content,
+          initiative = this.get('controller.model');
+      debugger;
+      this.store.createRecord('initiative');
+      initiative.save().then(function(model) {
+        _this.transitionTo('initiatives');
+      });
+    }
   }
 
 });

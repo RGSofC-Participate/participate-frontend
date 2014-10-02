@@ -11,25 +11,29 @@
   if isEditing
     h5 Initiative title
       {{input value=title}}
-    h5 Issue title 
-      {{input value=issue.title}}
+    // h5 Issue title 
+    //   {{input value=issue.title}}
   else
     h2
       = title 
       h5 <button {{action "toggleEditing"}}> Edit</button>
-    p.issue_title Issue: #{issue.title}
+    // p.issue_title Issue: #{issue.title}
 
 
 .choice
   if isEditing
+    <input type = "button" value = "Cancel" click = "cancel" />
+    //<a href="http://stackoverflow.com"> Cancel </a>
+    //<a href="/initiatives/3"> Cancel </a>
+    link-to 'initiative.index' | Cancel
     button click="cancel" Cancel
     button click="submit" Submit 
 // .cancel 
 //   if isEditing
 //     button click="cancel" Cancel
 
-// .issue_title
-//   p Issue: #{issue.title}
+.issue_title
+  p Issue: #{issue.title}
 
 .description
   p
