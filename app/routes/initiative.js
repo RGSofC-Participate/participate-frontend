@@ -19,16 +19,17 @@ var InitiativeRoute = Ember.Route.extend({
     },
 
     //cancel button
-    cancel: function() {
-      this.transitionTo('initiative');
+    cancelEdit: function() {
+      var initiative = this.get('controller.model');
+      this.transitionTo('initiatives');
       //this.transitionToRoute('initiative'); // page still has the edit box and buttons
       // this.refresh();
       //Ember.$.egtScript('/templates/initiative.emblem');
       //document.execCommand('Stop');
     },
 
-    //submit edited changes
-    submit: function() {
+    //update edited changes
+    updateEdit: function() {
       var _this = this,
           content = this.controller.content,
           initiative = this.get('controller.model');

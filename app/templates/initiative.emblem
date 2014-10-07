@@ -22,12 +22,12 @@
 
 .choice
   if isEditing
-    <input type = "button" value = "Cancel" click = "cancel" />
+    //<input type = "button" value = "Cancel" click = "cancel" />
     //<a href="http://stackoverflow.com"> Cancel </a>
     //<a href="/initiatives/3"> Cancel </a>
-    link-to 'initiative.index' | Cancel
-    button click="cancel" Cancel
-    button click="submit" Submit 
+    //link-to 'initiative.index' | Cancel
+    button click="cancelEdit" Cancel
+    button click="updateEdit" Update 
 // .cancel 
 //   if isEditing
 //     button click="cancel" Cancel
